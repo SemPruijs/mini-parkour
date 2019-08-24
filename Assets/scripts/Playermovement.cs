@@ -11,7 +11,7 @@ public class Playermovement : MonoBehaviour
     private bool Jumping;
     public static int JumpLeft = 3;
     public Animator anim;
-    private bool jumpPressed;
+    private bool buttonPressed;
 
     public float moveHorizontal;
 
@@ -49,7 +49,7 @@ public class Playermovement : MonoBehaviour
 
     void jump() {
         if (JumpLeft > 0) {
-            if (Input.GetButtonDown("Jump")) {
+            if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) {
                 GetComponent<Animator>().SetTrigger("spacebarPressed");
                 Jumping = true;
                 JumpLeft--;
@@ -81,11 +81,25 @@ public class Playermovement : MonoBehaviour
         }
     }
 
-    public void leftButton() {
-        moveHorizontal = -100;
+    public void leftButtonDown() {
+        buttonPressed = true;
+        if (buttonPressed) {
+             moveHorizontal = -1.0f;
+        }
     }
 
-    public void rightButton() {
-        moveHorizontal = 100;
+    public void buttonUp() {
+        buttonPressed = false;
+        moveHorizontal = 0.0f;
+        print("hey");
     }
+    
+    public void rightButtonDown() {
+        buttonPressed = true;
+        if (buttonPressed) {
+             moveHorizontal = 1.0f;
+        }
+    }
+
+
 }
