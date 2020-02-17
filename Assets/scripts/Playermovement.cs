@@ -15,11 +15,16 @@ public class Playermovement : MonoBehaviour
 
     public float moveHorizontal;
 
+    
+    //audio
+    private AudioSource _audioSource;
+
+    public AudioClip JumpClip;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D> ();
         anim.GetComponent<Animator>();
-       
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -54,6 +59,7 @@ public class Playermovement : MonoBehaviour
                 Jumping = true;
                 JumpLeft--;
                 rb2d.AddForce(new Vector2 (rb2d.velocity.x, jumpForce));
+                _audioSource.PlayOneShot(JumpClip);
             }
         }
         
