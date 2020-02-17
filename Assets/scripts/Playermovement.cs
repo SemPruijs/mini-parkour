@@ -28,8 +28,10 @@ public class Playermovement : MonoBehaviour
     }
 
     void Update() {
-        jump();
-
+        if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            jump();
+        }
     }
 
 
@@ -38,7 +40,7 @@ public class Playermovement : MonoBehaviour
     void FixedUpdate()
     {
         //collects input form the player
-        moveHorizontal = Input.GetAxis ("Horizontal");
+        // moveHorizontal = Input.GetAxis ("Horizontal");
 
         rb2d.velocity = new Vector2(moveHorizontal * speed, rb2d.velocity.y);
         if (rb2d.velocity.y < 0) {
@@ -52,15 +54,13 @@ public class Playermovement : MonoBehaviour
         
     }
 
-    void jump() {
+    public void jump() {
         if (JumpLeft > 0) {
-            if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) {
                 GetComponent<Animator>().SetTrigger("spacebarPressed");
                 Jumping = true;
                 JumpLeft--;
                 rb2d.AddForce(new Vector2 (rb2d.velocity.x, jumpForce));
                 _audioSource.PlayOneShot(JumpClip);
-            }
         }
         
     }
@@ -77,35 +77,19 @@ public class Playermovement : MonoBehaviour
     }
 
 
-
-    public void jumpButton() {
-        if (JumpLeft > 0) {
-            GetComponent<Animator>().SetTrigger("spacebarPressed");
-            Jumping = true;
-            JumpLeft--;
-            rb2d.AddForce(new Vector2 (rb2d.velocity.x, jumpForce));
-        }
+    public void left()
+    {
+        moveHorizontal = -0.7f;
     }
 
-    public void leftButtonDown() {
-        buttonPressed = true;
-        if (buttonPressed) {
-             moveHorizontal = -1.0f;
-        }
+    public void right()
+    {
+        moveHorizontal = 0.7f;
+        moveHorizontal = 1f;
     }
 
-    public void buttonUp() {
-        buttonPressed = false;
-        moveHorizontal = 0.0f;
-        print("hey");
+    public void ResetMoveHorizontal()
+    {
+        moveHorizontal = 0;
     }
-    
-    public void rightButtonDown() {
-        buttonPressed = true;
-        if (buttonPressed) {
-             moveHorizontal = 1.0f;
-        }
-    }
-
-
 }
