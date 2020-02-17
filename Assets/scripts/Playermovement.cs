@@ -12,8 +12,11 @@ public class Playermovement : MonoBehaviour
     public static int JumpLeft = 3;
     public Animator anim;
     private bool buttonPressed;
+    public bool usesKeyboard = false;
 
     public float moveHorizontal;
+
+    public ParticleSystem JumpParticleSystem;
 
     
     //audio
@@ -30,6 +33,7 @@ public class Playermovement : MonoBehaviour
     void Update() {
         if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow))
         {
+            SetKeyboard(true);
             jump();
         }
     }
@@ -40,8 +44,10 @@ public class Playermovement : MonoBehaviour
     void FixedUpdate()
     {
         //collects input form the player
-        // moveHorizontal = Input.GetAxis ("Horizontal");
-
+        if (usesKeyboard)
+        {
+            moveHorizontal = Input.GetAxis ("Horizontal");    
+        }
         rb2d.velocity = new Vector2(moveHorizontal * speed, rb2d.velocity.y);
         if (rb2d.velocity.y < 0) {
             GetComponent<Animator>().SetBool("fallingDown", true);
@@ -61,6 +67,7 @@ public class Playermovement : MonoBehaviour
                 JumpLeft--;
                 rb2d.AddForce(new Vector2 (rb2d.velocity.x, jumpForce));
                 _audioSource.PlayOneShot(JumpClip);
+                JumpParticleSystem.Play();
         }
         
     }
@@ -91,5 +98,10 @@ public class Playermovement : MonoBehaviour
     public void ResetMoveHorizontal()
     {
         moveHorizontal = 0;
+    }
+
+    public void SetKeyboard(bool Use)
+    {
+        usesKeyboard = Use;
     }
 }
