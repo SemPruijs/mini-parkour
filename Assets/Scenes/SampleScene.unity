@@ -702,9 +702,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpForce: 800
+  DashDownForce: -3000
   anim: {fileID: 321648134}
   usesKeyboard: 0
   moveHorizontal: 0
+  JumpParticleSystem: {fileID: 680061538}
   JumpClip: {fileID: 8300000, guid: 5c7b712d2bcc0491c9acedad40eaef53, type: 3}
 --- !u!114 &321648133
 MonoBehaviour:
@@ -2437,8 +2439,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680061535}
   m_LocalRotation: {x: -0, y: -0, z: 0.9368739, w: -0.3496675}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.111, z: 0}
+  m_LocalScale: {x: 1.0051, y: 1.0051, z: 1.0051}
   m_Children: []
   m_Father: {fileID: 321648131}
   m_RootOrder: 0
@@ -2523,7 +2525,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -2695,9 +2697,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
-      minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      minMaxState: 2
+      minColor: {r: 1, g: 0.7056138, b: 0.3726415, a: 1}
+      maxColor: {r: 1, g: 0.96991533, b: 0.36320752, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

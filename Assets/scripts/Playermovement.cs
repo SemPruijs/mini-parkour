@@ -6,7 +6,8 @@ public class Playermovement : MonoBehaviour
 {
 
     public float speed;      
-    public float jumpForce;         
+    public float jumpForce;
+    public float DashDownForce;
     private Rigidbody2D rb2d;
     private bool Jumping;
     public static int JumpLeft = 3;
@@ -36,6 +37,11 @@ public class Playermovement : MonoBehaviour
             SetKeyboard(true);
             jump();
         }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            DashDown();
+        }
     }
 
 
@@ -53,11 +59,12 @@ public class Playermovement : MonoBehaviour
             GetComponent<Animator>().SetBool("fallingDown", true);
             GetComponent<Animator>().SetBool("onGround", false);
         }
+    }
 
-    
-
-        
-        
+    public void DashDown()
+    {
+        print("going Down!");
+        rb2d.AddForce(new Vector2 (rb2d.velocity.x, DashDownForce));
     }
 
     public void jump() {
@@ -76,7 +83,6 @@ public class Playermovement : MonoBehaviour
         if (col.gameObject.tag == "ground") {
             GetComponent<Animator>().SetBool("onGround", true);
             GetComponent<Animator>().SetBool("fallingDown", false);
-            
             JumpLeft = 3;
             Jumping = false;
         } 
