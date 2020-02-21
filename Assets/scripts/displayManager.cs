@@ -6,11 +6,7 @@ using UnityEngine.UI;
 public class displayManager : MonoBehaviour
 {
    public Text JumpLeftText;
-
-    void Start() {
-       
-    }
-
+   
     void Update()
     {
         JumpLeftText.text = Playermovement.JumpLeft.ToString();

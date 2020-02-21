@@ -40,6 +40,7 @@ public class Playermovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            SetKeyboard(true);
             DashDown();
         }
     }

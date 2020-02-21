@@ -12,6 +12,7 @@
         <e p="scripts" t="Include">
           <e p="CameraFollow.cs" t="Include" />
           <e p="displayManager.cs" t="Include" />
+          <e p="DisplayManagerMenu.cs" t="Include" />
           <e p="LoadScene.cs" t="Include" />
           <e p="Playermovement.cs" t="Include" />
           <e p="Respawn.cs" t="Include" />
