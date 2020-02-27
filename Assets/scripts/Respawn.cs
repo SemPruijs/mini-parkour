@@ -36,8 +36,10 @@ public class Respawn : MonoBehaviour
         }
     }
 
-    void respawn() {
+    void respawn()
+    {
         player.transform.position = repawnPosision;
+        player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 }
 
