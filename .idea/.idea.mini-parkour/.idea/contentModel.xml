@@ -11,6 +11,7 @@
         </e>
         <e p="scripts" t="Include">
           <e p="CameraFollow.cs" t="Include" />
+          <e p="counter.cs" t="Include" />
           <e p="displayManager.cs" t="Include" />
           <e p="DisplayManagerMenu.cs" t="Include" />
           <e p="LoadScene.cs" t="Include" />
