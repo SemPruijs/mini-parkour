@@ -17,6 +17,7 @@
           <e p="LoadScene.cs" t="Include" />
           <e p="Playermovement.cs" t="Include" />
           <e p="Respawn.cs" t="Include" />
+          <e p="rotate.cs" t="Include" />
         </e>
       </e>
       <e p="mini-parkour.sln" t="IncludeFlat" />
