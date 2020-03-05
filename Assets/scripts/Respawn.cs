@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,22 +19,29 @@ public class Respawn : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.tag == "obstacle")
-        {
-            print("you died!");
-            _audioSource.PlayOneShot(DieClip);
-            respawn();
-        }
 
-        if (col.gameObject.tag == "checkpoint")
-        {
-            if (repawnPosision != col.transform.position)
+    private void OnCollisionExit2D(Collision2D col)
+    {
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "obstacle")
             {
-                _audioSource.PlayOneShot(CheckPointClip);
-            }
-            repawnPosision = new Vector3(col.transform.position.x, col.transform.position.y, col.transform.position.z);
-        }
+                print("you died!");
+                _audioSource.PlayOneShot(DieClip);
+                respawn();
+                }
+                
+                if (col.gameObject.tag == "checkpoint")
+                {
+                    if (repawnPosision != col.transform.position)
+                    {
+                        _audioSource.PlayOneShot(CheckPointClip);
+                    }
+                    repawnPosision = new Vector3(col.transform.position.x, col.transform.position.y, col.transform.position.z);
+                }
     }
 
     void respawn()
