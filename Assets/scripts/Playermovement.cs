@@ -32,13 +32,13 @@ public class Playermovement : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown("w"))
         {
             SetKeyboard(true);
             jump();
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown("s"))
         {
             SetKeyboard(true);
             DashDown();
