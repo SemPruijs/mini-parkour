@@ -14,6 +14,7 @@ public class Playermovement : MonoBehaviour
     public Animator anim;
     private bool buttonPressed;
     public bool usesKeyboard = false;
+    public static float Timer = 0;
 
     public float moveHorizontal;
 
@@ -43,6 +44,8 @@ public class Playermovement : MonoBehaviour
             SetKeyboard(true);
             DashDown();
         }
+
+        Timer = Time.time;
     }
 
 
